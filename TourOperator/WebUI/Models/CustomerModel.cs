@@ -10,7 +10,7 @@ namespace WebUI.Models
 
         public DateTime? Birthdate { get; set; }
         public string Sex { get; set; }
-
+         
         public string PassportCode { get; set; }
         public string PassportNumber { get; set; }
         public string PassportIssuePlace { get; set; }

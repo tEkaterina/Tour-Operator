@@ -1,7 +1,6 @@
 ﻿var tourOperatorApp = angular.module('tourOperatorApp', ['ngRoute']);
 
 tourOperatorApp.controller('userController', userController);
-tourOperatorApp.controller('customerController', customerController);
 
 var configFunction = function ($routeProvider) {
     $routeProvider

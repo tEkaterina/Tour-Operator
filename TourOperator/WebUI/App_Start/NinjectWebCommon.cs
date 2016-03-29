@@ -1,4 +1,5 @@
 using DependencyResolver;
+using WebUI.Infrastructure;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(WebUI.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(WebUI.App_Start.NinjectWebCommon), "Stop")]
@@ -12,8 +13,6 @@ namespace WebUI.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    
-    using  Infrastructure;
 
     public static class NinjectWebCommon 
     {
