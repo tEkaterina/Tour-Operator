@@ -1,0 +1,38 @@
+﻿<div class="row">
+    <form class="form-horizontal" ng-controller="customerController" ng-submit="add()">
+        <div class="form-group">
+            <label for="surname" class="col-sm-2 control-label">ФИО</label>
+            <div class="col-sm-3">
+                <input type="text" ng-model="addForm.name" id="surname" placeholder="Фамилия" class="form-control" required>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" ng-model="addForm.name" id="name" placeholder="Имя" class="form-control" required>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" ng-model="addForm.name" id="patronymic" placeholder="Отчество" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="birthday" class="col-sm-2 control-label">Дата рождения</label>
+            <div class="col-sm-3">
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="text" class="form-control" id="birthday">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sex" class="col-sm-2 control-label">Пол</label>
+            <div class="col-sm-3">
+                <div class="radio">
+                    <label id="sex"><input type="radio" name="optradio" checked>Мужской</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="optradio">Женский</label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
