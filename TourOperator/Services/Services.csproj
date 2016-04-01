@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concrete\CustomerContactDataService.cs" />
+    <Compile Include="Concrete\CustomerPassportService.cs" />
     <Compile Include="Concrete\CustomerPersonalDataService.cs" />
     <Compile Include="Concrete\RoleService.cs" />
     <Compile Include="Concrete\UserService.cs" />
