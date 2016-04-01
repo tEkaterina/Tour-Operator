@@ -13,8 +13,9 @@ var userController = function($scope, $routeParams, $location, $http) {
         if ($scope.addForm.isAdmin) {
             roles.push('ADMIN');
         }
+        chooseNavbarItem();
         $http.post(
-            '/User/AddUser', {
+            '/User/Add', {
                     Email: $scope.addForm.email,
                     Password: $scope.addForm.password,
                     Name: $scope.addForm.name,

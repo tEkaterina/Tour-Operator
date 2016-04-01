@@ -5,7 +5,7 @@ namespace Services.Interfaces
 {
     public interface IUserService
     {
-        void AddUser(User user);
+        void Add(User user);
         IEnumerable<User> GetAll();
     }
 }

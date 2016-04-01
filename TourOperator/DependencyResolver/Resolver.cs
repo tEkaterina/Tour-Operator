@@ -19,9 +19,13 @@ namespace DependencyResolver
 
             kernel.Bind<IRepository<User>>().To<Repository<User>>();
             kernel.Bind<IRepository<Role>>().To<Repository<Role>>();
-            
+            kernel.Bind<IRepository<CustomerPersonalData>>()
+                .To<Repository<CustomerPersonalData>>();
+
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IRoleService>().To<RoleService>();
+            kernel.Bind<ICustomerPersonalDataService>()
+                .To<CustomerPersonalDataService>();
         }
     }
 }

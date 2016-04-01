@@ -40,8 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\CustomerPersonalDataService.cs" />
     <Compile Include="Concrete\RoleService.cs" />
     <Compile Include="Concrete\UserService.cs" />
+    <Compile Include="Interfaces\ICustomerContactDataService.cs" />
+    <Compile Include="Interfaces\ICustomerPassportService.cs" />
+    <Compile Include="Interfaces\ICustomerPersonalDataService.cs" />
     <Compile Include="Interfaces\IRoleService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

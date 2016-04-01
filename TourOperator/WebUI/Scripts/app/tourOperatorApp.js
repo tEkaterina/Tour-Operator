@@ -1,28 +1,28 @@
 ﻿var tourOperatorApp = angular.module('tourOperatorApp', ['ngRoute']);
 
 tourOperatorApp.controller('userController', userController);
+tourOperatorApp.controller('customerController', customerController);
 
 var configFunction = function ($routeProvider) {
     $routeProvider
         .when('/user/', {
-            templateUrl: function () {
+            templateUrl: function() {
                 chooseNavbarItem(document.getElementById('newUser'));
-                return '/User/AddUser';
+                return '/User/Add';
             }
         })
         .when('/users/', {
-            templateUrl: function (params) {
+            templateUrl: function(params) {
                 chooseNavbarItem(document.getElementById('allUsers'));
                 return '/User/GetAllUsers/';
             }
         })
         .when('/customer/', {
-                templateUrl: function() {
-                    chooseNavbarItem(document.getElementById('newCustomer'));
-                    return '/Customer/AddCustomer';
-                }
-            })
-    ;
+            templateUrl: function() {
+                chooseNavbarItem(document.getElementById('newCustomer'));
+                return '/Customer/AddCustomer';
+            }
+        });
 }
 configFunction.$inject = ['$routeProvider'];
 

@@ -40,6 +40,7 @@ var customerController = function ($scope, $routeParams, $location, $http) {
         } else {
             $scope.addForm.sex = 'F';
         }
+        chooseNavbarItem();
         $http.post(
             '/Customer/AddCustomer', {
                 Surname: $scope.addForm.surname,

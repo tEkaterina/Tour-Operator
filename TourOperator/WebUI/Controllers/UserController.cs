@@ -49,7 +49,7 @@ namespace WebUI.Controllers
                     }
                 }
 
-                _userService.AddUser(newUser);
+                _userService.Add(newUser);
                 return Json(true);
             }
             else

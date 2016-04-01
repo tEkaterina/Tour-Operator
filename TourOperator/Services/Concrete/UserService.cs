@@ -17,7 +17,7 @@ namespace Services.Concrete
             _repository = repository;
         }
 
-        public void AddUser(User user)
+        public void Add(User user)
         {
             if (user == null) throw new ArgumentNullException(nameof(user));
             _repository.Create(user);
