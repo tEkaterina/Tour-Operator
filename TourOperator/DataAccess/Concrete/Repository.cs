@@ -48,7 +48,7 @@ namespace DataAccess.Concrete
         {
             return _dbSet.Find(id);
         }
-
+        
         public TModel GetByPredicate(Expression<Func<TModel, bool>> predicate)
         {
             return _dbSet.FirstOrDefault(predicate);
@@ -58,7 +58,7 @@ namespace DataAccess.Concrete
         {
             return _dbSet.Where(predicate);
         }
-
+        
         private void CopyFields(TModel source, TModel target)
         {
             var properties = typeof (TModel)
