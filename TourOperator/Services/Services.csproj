@@ -40,14 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\CitizenshipService.cs" />
+    <Compile Include="Concrete\CityService.cs" />
     <Compile Include="Concrete\CustomerContactDataService.cs" />
     <Compile Include="Concrete\CustomerPassportService.cs" />
     <Compile Include="Concrete\CustomerPersonalDataService.cs" />
+    <Compile Include="Concrete\DisabilityService.cs" />
+    <Compile Include="Concrete\MaritalStatusService.cs" />
     <Compile Include="Concrete\RoleService.cs" />
     <Compile Include="Concrete\UserService.cs" />
+    <Compile Include="Interfaces\ICitizenshipService.cs" />
+    <Compile Include="Interfaces\ICityService.cs" />
     <Compile Include="Interfaces\ICustomerContactDataService.cs" />
     <Compile Include="Interfaces\ICustomerPassportService.cs" />
     <Compile Include="Interfaces\ICustomerPersonalDataService.cs" />
+    <Compile Include="Interfaces\IDisabilityService.cs" />
+    <Compile Include="Interfaces\IMaritalStatusService.cs" />
     <Compile Include="Interfaces\IRoleService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

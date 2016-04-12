@@ -4,18 +4,20 @@ namespace WebUI.Models
 {
     public class CustomerModel
     {
+        public int Id { get; set; }
+
         public string Surname { get; set; }
         public string Name { get; set; }
         public string Patronymic { get; set; }
 
-        public DateTime? Birthdate { get; set; }
+        public string Birthdate { get; set; }
         public string Sex { get; set; }
          
         public string PassportCode { get; set; }
         public string PassportNumber { get; set; }
         public string PassportIssuePlace { get; set; }
-        public DateTime? PassportIssueDate { get; set; }
-        public string Id { get; set; }
+        public string PassportIssueDate { get; set; }
+        public string PassportId { get; set; }
 
         public string BirthPlace { get; set; }
 

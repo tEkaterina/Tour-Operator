@@ -4,7 +4,7 @@ namespace Services.Interfaces
 {
     public interface ICustomerContactDataService
     {
-        void Add(CustomerContactData customerContactData);
+        void Update(CustomerContactData customerContactData);
         CustomerContactData GetById(int id);
     }
 }

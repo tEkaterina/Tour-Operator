@@ -4,7 +4,7 @@ namespace Services.Interfaces
 {
     public interface ICustomerPassportService
     {
-        void Add(CustomerPassport passport);
+        void Update(CustomerPassport passport);
         CustomerPassport GetById(int id);
     }
 }

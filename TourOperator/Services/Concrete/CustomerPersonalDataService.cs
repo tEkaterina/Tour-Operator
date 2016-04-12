@@ -32,9 +32,31 @@ namespace Services.Concrete
             _uow.Commit();
         }
 
+        public void Update(CustomerPersonalData customer)
+        {
+            if(customer == null)
+                throw new ArgumentNullException(nameof(customer));
+
+            _customerRepository.Update(customer);
+            _uow.Commit();
+        }
+
+        public void Remove(int id)
+        {
+            if (id <= 0)
+                throw new ArgumentException($"Invalid id = {id}: id must be greater than zero.");
+            _customerRepository.Delete(GetById(id));
+            _uow.Commit();
+        }
+
         public IEnumerable<CustomerPersonalData> GetAll()
         {
             return _customerRepository.GetAll();
+        }
+        
+        public CustomerPersonalData GetById(int id)
+        {
+            return _customerRepository.GetById(id);
         }
     }
 }

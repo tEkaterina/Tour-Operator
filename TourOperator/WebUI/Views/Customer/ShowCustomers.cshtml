@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebUI.Models.CustomerModel>
+
+@foreach (var customer in Model)
+{
+    var modalId = "#removeCustomer" + @customer.Id;
+    
+    <div class="col-sm-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                @customer.Surname @customer.Name @customer.Patronymic
+                @if (customer.Sex == "M")
+                {
+                    <i class="fa fa-male"></i>
+                }
+                else
+                {
+                    <i class="fa fa-female"></i>
+                }
+                <span class="pull-right tool-icon-bar">
+                    <a href="/#/customer/@customer.Id"><i class="fa fa-ellipsis-h tool-icon"></i></a>
+                    <a href="/#/customer/edit/@customer.Id"><i class="fa fa-pencil tool-icon"></i></a>
+                    <a role="button" data-toggle="modal" data-target="@modalId"><i class="fa fa-times tool-icon"></i></a>
+                </span>
+            </div>
+            <div class="panel-body" style="padding: 0 !important;">
+                <table class="table table-striped" style="margin: 0 !important;">
+                    <tbody>
+                    <tr>
+                        <td>Дата рождения</td>
+                        <td>@customer.Birthdate.ToString()</td>
+                    </tr>
+                    <tr>
+                        <td>Адрес</td>
+                        <td>@customer.City, @customer.Address</td>
+                    </tr>
+                    <tr>
+                        <td>Мобильный телефон</td>
+                        <td>@customer.MobilePhone</td>
+                    </tr>
+                    <tr>
+                        <td>Домашний телефон</td>
+                        <td>@customer.HomePhone</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>@customer.Email</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("RemoveCustomerModal", customer)
+}

@@ -1,0 +1,21 @@
+﻿@model WebUI.Models.CustomerModel
+    @{
+        var modalId = "removeCustomer" + @Model.Id;
+    }
+<div ng-controller="customerController" class="modal fade" id="@modalId" tabindex="-1" role="dialog" aria-labelledby="Удаление пользователя">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="removeCustomerLabel">Удаление пользователя</h4>
+            </div>
+            <div class="modal-body">
+                Вы уверены, что хотите удалить клиента "@Model.Surname @Model.Name @Model.Patronymic"?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="remove(@Model.Id)">Да</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Нет</button>
+            </div>
+        </div>
+    </div>
+</div>

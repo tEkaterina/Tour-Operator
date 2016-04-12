@@ -2,9 +2,41 @@
     
 @foreach (var user in Model)
 {
-    <p>@user.Id</p>
-    <p>@user.Name</p>
-    <p>@user.Email</p>
-    <p>@user.Salt</p>
+    var modalId = "#removeUser" + @user.Id;
+    <div class="col-sm-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                @user.Name
+                <span class="pull-right tool-icon-bar">
+                    <a href="/#/user/edit/@user.Id"><i class="fa fa-pencil tool-icon"></i></a>
+                    <a role="button" data-toggle="modal" data-target="@modalId"><i class="fa fa-times tool-icon"></i></a>
+                </span>
+            </div>
+            <div class="panel-body" style="padding: 0 !important;">
+                <table class="table table-striped" style="margin: 0 !important;">
+                    <tbody>
+                    <tr>
+                        <td>Email</td>
+                        <td>@user.Email</td>
+                    </tr>
+                    <tr>
+                        <td>Администратор</td>
+                        <td>
+                            @if (user.Roles.FirstOrDefault(r => r.Name == "ADMIN") != null)
+                            {
+                                @:Да
+                            }
+                            else
+                            {
+                                @:Нет
+                            }
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("UserRemoveModal", user);
 }
 

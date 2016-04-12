@@ -5,13 +5,13 @@ var customerController = function ($scope, $routeParams, $location, $http) {
         name:'',
         patronymic:'',
 
-        birthdate: '',
+        birthdate: new Date(),
         sex:'',
 
         passportCode:'',
         passportNumber:'',
         passportIssuePlace:'',
-        passportIssueDate:'',
+        passportIssueDate: '',
         id:'',
 
         birthplace:'',
@@ -30,31 +30,84 @@ var customerController = function ($scope, $routeParams, $location, $http) {
 
         salary: '',
 
-        returnUrl: $routeParams.returnUrl
+        returnUrl: $routeParams.returnUrl,
     };
+    
+    $scope.customerId = 0;
+
+    $scope.fillForm = function (model) {
+        
+        $scope.addForm.surname = model.Surname;
+        $scope.addForm.name = model.Name;
+        $scope.addForm.patronymic = model.Patronymic;
+
+        $scope.addForm.birthdate = $scope.parseDate(model.Birthdate);
+        console.log(model.Sex);
+        if (model.Sex == 'M') {
+            var male = document.getElementById('male');
+            male.checked = true;
+        } else {
+            var female = document.getElementById('female');
+            female.checked = true;
+        }
+        $scope.addForm.sex = model.Sex;
+        
+        $scope.addForm.passportCode = model.PassportCode;
+        $scope.addForm.passportNumber = model.PassportNumber;
+        $scope.addForm.passportIssuePlace = model.PassportIssuePlace;
+        $scope.addForm.passportIssueDate = model.PassportIssueDate;
+        $scope.addForm.id = model.PassportId;
+
+        $scope.addForm.birthplace = model.BirthPlace;
+
+        $scope.addForm.city = model.City;
+        $scope.addForm.address = model.Address;
+        $scope.addForm.mobilePhone = model.MobilePhone;
+        $scope.addForm.homePhone = model.HomePhone;
+        $scope.addForm.email = model.Email;
+
+        $scope.addForm.maritalStatus = model.MaritalStatus;
+        $scope.addForm.citizenship = model.Citizenship;
+        $scope.addForm.disability = model.Disability;
+        $scope.addForm.pensioner = model.Pensioner;
+        $scope.addForm.reservist = model.Reservist;
+
+        $scope.addForm.salary = model.Salary;
+
+        $scope.customerId = model.Id;
+    }
 
     $scope.add = function () {
-        console.log(document.getElementById('male').checked);
+        $scope.customerId = 0;
+        $scope.excecuteSaveQuery('/Customer/AddCustomer');
+    }
+
+    $scope.save = function () {
+        $scope.excecuteSaveQuery('/Customer/EditCustomer');
+    }
+
+    $scope.excecuteSaveQuery = function(url) {
         if (document.getElementById('male').checked) {
             $scope.addForm.sex = 'M';
         } else {
             $scope.addForm.sex = 'F';
         }
         chooseNavbarItem();
-        $http.post(
-            '/Customer/AddCustomer', {
+        $http.post(url, {
+                Id: $scope.customerId,
+
                 Surname: $scope.addForm.surname,
                 Name: $scope.addForm.name,
                 Patronymic: $scope.addForm.patronymic,
 
-                Birthdate: new Date($scope.addForm.birthdate),
+                Birthdate: $scope.addForm.birthdate,
                 Sex: $scope.addForm.sex,
 
                 PassportCode: $scope.addForm.passportCode,
                 PassportNumber: $scope.addForm.passportNumber,
                 PassportIssueplace: $scope.addForm.passportIssuePlace,
-                PassportIssueDate: new Date($scope.addForm.passportIssueDate),
-                Id: $scope.addForm.id,
+                PassportIssueDate: $scope.addForm.passportIssueDate,
+                PassportId: $scope.addForm.id,
 
                 Birthplace: $scope.addForm.birthplace,
 
@@ -67,7 +120,7 @@ var customerController = function ($scope, $routeParams, $location, $http) {
                 MaritalStatus: $scope.addForm.maritalStatus,
                 Citizenship: $scope.addForm.citizenship,
                 Disability: $scope.addForm.disability,
-                Pensioner:  $scope.addForm.pensioner,
+                Pensioner: $scope.addForm.pensioner,
                 Reservist: $scope.addForm.reservist,
 
                 Salary: +($scope.addForm.salary)
@@ -78,11 +131,42 @@ var customerController = function ($scope, $routeParams, $location, $http) {
                 } else {
                     $location.path($scope.addForm.returnUrl);
                 }
+                window.location.reload();
             })
             .error(function (error) {
                 console.error(error);
             });
     }
+
+    $scope.remove = function(id) {
+        $http.post('/Customer/Remove', { id: id })
+            .success(function(data) {
+                $location.path('/customers');
+            })
+            .error(function(error) {
+                console.error(error);
+            });
+    };
+
+    $scope.isDisabledDate = function (currentDate, mode) {
+        return mode === 'day' && (currentDate.getDay() === 0 || currentDate.getDay() === 6);
+    };
+
+    $scope.datePickers = {
+        birthdateIsOpened: false,
+        birthdateOpen: function() {
+            $scope.datePickers.birthdateIsOpened = true;
+        },
+        passportIsOpened: false,
+        passportOpen: function() {
+            $scope.datePickers.passportIsOpened = true;
+        }
+    }
+
+    $scope.parseDate = function(strDate){
+        var dateParts = strDate.split(".");
+        return new Date(dateParts[2], (dateParts[1] - 1), dateParts[0]);
+    };
 }
 
 customerController.$inject= ['$scope', '$routeParams', '$location', '$http'];

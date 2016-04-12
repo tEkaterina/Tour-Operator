@@ -1,0 +1,127 @@
+﻿@model WebUI.Models.CustomerModel
+@{
+    var modalId = "#removeCustomer" + @Model.Id; 
+}
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        @Model.Surname @Model.Name @Model.Patronymic
+        @if (Model.Sex == "M")
+        {
+            <i class="fa fa-male"></i>
+        }
+        else
+        {
+            <i class="fa fa-female"></i>
+        }
+        <span class="pull-right tool-icon-bar">
+            <a href="/#/customer/edit/@Model.Id"><i class="fa fa-pencil tool-icon"></i></a>
+            <a role="button" data-toggle="modal" data-target="@modalId"><i class="fa fa-times tool-icon"></i></a>
+        </span>
+    </div>
+    <div class="panel-body" style="padding: 0 !important;">
+        <table class="table table-striped" style="margin: 0 !important;">
+            <tbody>
+            <tr>
+                <td></td>
+                <td>Дата рождения</td>
+                <td>@Model.Birthdate</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Паспорт</td>
+                <td>@Model.PassportCode @Model.PassportNumber</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Кем выдан паспорт</td>
+                <td>@Model.PassportIssuePlace</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Дата выдачи</td>
+                <td>@Model.PassportIssueDate</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Идентификационный номер</td>
+                <td>@Model.PassportId</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Место рождения</td>
+                <td>@Model.BirthPlace</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Адрес</td>
+                <td>@Model.City, @Model.Address</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Мобильный телефон</td>
+                <td>@Model.MobilePhone</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Домашний телефон</td>
+                <td>@Model.HomePhone</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Email</td>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Семейное положение</td>
+                <td>@Model.MaritalStatus</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Гражданство</td>
+                <td>@Model.Citizenship</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Инвалидность</td>
+                <td>@Model.Disability</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Пенсионер</td>
+                <td>
+                    @if (Model.Pensioner)
+                    {
+                        @:Да
+                    }
+                    else
+                    {
+                        @:Нет
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Военнообязанный</td>
+                <td>
+                    @if (Model.Reservist)
+                    {
+                        @:Да
+                    }
+                    else
+                    {
+                        @:Нет
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Ежемесячный доход</td>
+                <td>@Model.Salary</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+@Html.Partial("RemoveCustomerModal", Model)

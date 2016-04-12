@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
     public class CustomerContactData: IModel
     {
-        [ForeignKey("CustomerPersonalDataId")]
+        [Key]
+        [ForeignKey("CustomerPersonalData")]
         public int Id { get; set; }
 
         public string BirthPlace { get; set; }

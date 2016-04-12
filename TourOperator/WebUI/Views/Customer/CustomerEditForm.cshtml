@@ -1,0 +1,159 @@
+﻿<div class="form-group" id="personalData">
+    <label for="surname" class="col-sm-2 control-label">ФИО</label>
+    <div class="col-sm-3">
+        <input type="text" ng-model="addForm.surname" id="surname" placeholder="Фамилия" class="form-control" required>
+    </div>
+    <div class="col-sm-3">
+        <input type="text" ng-model="addForm.name" id="name" placeholder="Имя" class="form-control" required>
+    </div>
+    <div class="col-sm-3">
+        <input type="text" ng-model="addForm.patronymic" id="patronymic" placeholder="Отчество" class="form-control" required>
+    </div>
+</div>
+<div class="form-group" id="birthdateData">
+    <label for="birthdate" class="col-sm-2 control-label">Дата рождения</label>
+    <div class="col-sm-3">
+        <div class="input-group">
+            <input id="birthdate" type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy" ng-model="addForm.birthdate" is-open="datePickers.birthdateIsOpened" ng-required="true" close-text="Close" readonly />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" 
+                        ng-click="datePickers.birthdateOpen()"><i class="fa fa-calendar" aria-hidden="true"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group" id="sexData">
+    <label for="sex" class="col-sm-2 control-label">Пол</label>
+    <div class="col-sm-3">
+        <div class="radio">
+            <label id="sex"><input type="radio" name="optradio" id="male" checked>Мужской</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="optradio" id="female">Женский</label>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="form-group" id="passwordNumberData">
+    <label for="passportCode" class="col-sm-2 control-label">Паспортные данные</label>
+    <div class="col-sm-2">
+        <input type="text" id="passportCode" ng-model="addForm.passportCode" placeholder="Серия паспорта" class="form-control" required />
+    </div>
+    <div class="col-sm-3">
+        <input type="text" id="passportNumber" ng-model="addForm.passportNumber" placeholder="Номер паспорта" class="form-control" pattern="\d{6,}" title="Номер паспорта должен содержать не менее 6 цифр" required />
+    </div>
+</div>
+<div id="passportInfo" class="form-group">
+    <div class="col-sm-4 col-sm-offset-2">
+        <input type="text" id="passportIssuePlace" ng-model="addForm.passportIssuePlace" placeholder="Кем выдан паспорт" class="form-control" required />
+    </div>
+    <label for="passportIssueDate" class="col-sm-2 control-label">Дата выдачи</label>
+    <div class="col-sm-3">
+        <div class="input-group">
+            <input id="passportIssueDate" type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy" ng-model="addForm.passportIssueDate" is-open="datePickers.passportIsOpened" ng-required="true" close-text="Close" readonly />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default"
+                        ng-click="datePickers.passportOpen()">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+</div>
+<div id="personalIdData" class="form-group">
+    <div class="col-sm-4 col-sm-offset-2">
+        <input type="text" id="personalId" ng-model="addForm.id" placeholder="Идентификационный номер" class="form-control" pattern="[\w\d]{14,14}" title="Идент. номер должен состоять из 14 символов" required />
+    </div>
+</div>
+<hr />
+<div id="birthPlaceData" class="form-group">
+    <label for="birthplace" class="col-sm-2 control-label">Место рождения</label>
+    <div class="col-sm-3">
+        <input type="text" id="birthplace" ng-model="addForm.birthplace" placeholder="Место рождения" class="form-control" required>
+    </div>
+</div>
+<div id="cityData" class="form-group"  ng-controller="cityController">
+    <label for="city" class="col-sm-2 control-label">Город фактического проживания</label>
+    <div class="col-sm-3">
+        <select class="form-control" id="city" ng-model="addForm.city" required>
+            <option ng-repeat="city in cities">{{city}}</option>
+        </select>
+    </div>
+    <div class="col-sm-4">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Добавить новый город" ng-model="newCity">
+            <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button" ng-click="addCity(newCity); newCity='';">Добавить</button>
+            </span>
+        </div>
+    </div>
+</div>
+<div id="addressData" class="form-group">
+    <label for="address" class="col-sm-2 control-label">Адрес фактического проживания</label>
+    <div class="col-sm-7">
+        <input id="address" placeholder="Адрес" class="form-control" required ng-model="addForm.address" />
+    </div>
+</div>
+<hr />
+<div id="phonesData" class="form-group">
+    <label for="homePhone" class="col-sm-2 control-label">Домашний телефон</label>
+    <div class="col-sm-3">
+        <input type="text" ng-model="addForm.homePhone" id="homePhone" class="form-control" pattern="\d{6,9}" title="Введите корректный номер телефона, который содержит код и номер." placeholder="Домашний телефон" />
+    </div>
+    <label for="mobilePhone" class="col-sm-2 control-label">Мобильный телефон</label>
+    <div class="col-sm-3">
+        <input type="text" ng-model="addForm.mobilePhone" id="mobilePhone" class="form-control" pattern="\d{6,9}" title="Введите корректный номер телефона, который содержит код и номер." placeholder="Мобильный телефон" />
+    </div>
+</div>
+<div id="emailData" class="form-group">
+    <label for="email" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-3">
+        <input type="email" ng-model="addForm.email" id="email" placeholder="Email" class="form-control" />
+    </div>
+</div>
+<hr/>
+<div ng-controller="infrastructureController">
+    <div id="maritalStatusData" class="form-group">
+        <label for="maritalStatus" class="col-sm-2 control-label">Семейное положение</label>
+        <div class="col-sm-3">
+            <select class="form-control" id="maritalStatus" ng-model="addForm.maritalStatus" required>
+                <option ng-repeat="status in maritalStatuses">{{status}}</option>
+            </select>
+        </div>
+    </div>
+    <div id="сitizenshipData" class="form-group">
+        <label for="сitizenship" class="col-sm-2 control-label">Гражданство</label>
+        <div class="col-sm-3">
+            <select class="form-control" id="сitizenship" ng-model="addForm.citizenship" required>
+                <option ng-repeat="citizenship in citizenships">{{citizenship}}</option>
+            </select>
+        </div>
+    </div>
+    <div id="disabilityData" class="form-group">
+        <label for="disability" class="col-sm-2 control-label">Инвалидность</label>
+        <div class="col-sm-3">
+            <select class="form-control" id="disability" ng-model="addForm.disability" required>
+                <option ng-repeat="disability in disabilities">{{disability}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div id="pensioner" class="form-group">
+    <div class="checkbox col-sm-offset-2">
+        <label><input type="checkbox" ng-model="addForm.pensioner" />Пенсионер</label>
+    </div>
+</div>
+<div id="reservist" class="form-group">
+    <div class="checkbox col-sm-offset-2">
+        <label><input type="checkbox" ng-model="addForm.reservist" />Военнообязанный</label>
+    </div>
+</div>
+<hr />
+<div id="salaryData" class="form-group">
+    <label for="salary" class="col-sm-2 control-label">Ежемесячный доход</label>
+    <div class="col-sm-3">
+        <input type="text" id="salary" ng-model="addForm.salary" class="form-control" placeholder="Ежемесячный доход" pattern="\d+(\.\d+)?$" title="Введите корректную денежную величину." required/>
+    </div>
+</div>

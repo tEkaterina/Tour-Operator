@@ -12,6 +12,37 @@ body {
     font-family: Lato;
 }
 
+.sing-in {
+    margin-top: 100px;
+    padding: 20px;
+    background-color: wheat;
+    border-radius: 20px;
+}
+
+.message {
+    top: 100px;
+}
+
+.sing-out,
+.sing-out:hover,
+.sing-out:visited,
+.sing-out:active,
+.sing-out:target {
+    color: inherit;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+.username {
+    font-family: Lato;
+}
+
+.welcome-logo {
+    font-size: 18px; 
+    text-align: right;
+    padding: 13px 0 13px 0;
+}
+
 .menu {
     border-style: solid;
     border-color: firebrick;
@@ -27,11 +58,27 @@ body {
     color: seashell;
 
     background-color: firebrick;
-    height: 76px;
     
     margin-bottom: 20px;
 }
 
 .logo-img {
     margin: 3px;
+}
+
+.tool-icon-bar a {
+    text-underline: none;
+}
+
+.tool-icon {
+    opacity: 0.4 !important;
+    margin: 3px;
+}
+
+.tool-icon:hover {
+    opacity: 1 !important;
+}
+
+.index-footer {
+    
 }

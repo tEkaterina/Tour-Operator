@@ -8,8 +8,8 @@ using Models;
 
 namespace DataAccess.Concrete
 {
-    public class Repository<TModel>: IRepository<TModel> 
-        where TModel: class, IModel
+    public class Repository<TModel> : IRepository<TModel>
+        where TModel : class, IModel
     {
         private readonly DbSet<TModel> _dbSet;
 
@@ -52,6 +52,11 @@ namespace DataAccess.Concrete
         public TModel GetByPredicate(Expression<Func<TModel, bool>> predicate)
         {
             return _dbSet.FirstOrDefault(predicate);
+        }
+
+        public IEnumerable<TModel> GetAllByPredicate(Expression<Func<TModel, bool>> predicate)
+        {
+            return _dbSet.Where(predicate);
         }
 
         private void CopyFields(TModel source, TModel target)

@@ -1,11 +1,13 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
     public class CustomerPassport: IModel
     {
-        [ForeignKey("CustomerPersonalDataId")]
+        [Key]
+        [ForeignKey("CustomerPersonalData")]
         public int Id { get; set; }
 
         public string PassportCode { get; set; }

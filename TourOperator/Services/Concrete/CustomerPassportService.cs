@@ -21,14 +21,18 @@ namespace Services.Concrete
             _passportRepository = passportRepository;
         }
 
-        public void Add(CustomerPassport passport)
+        public void Update(CustomerPassport passport)
         {
-            throw new NotImplementedException();
+            if (passport == null)
+                throw new ArgumentNullException(nameof(passport));
+
+            _passportRepository.Update(passport);
+            _uow.Commit();
         }
 
         public CustomerPassport GetById(int id)
         {
-            throw new NotImplementedException();
+            return _passportRepository.GetById(id);
         }
     }
 }

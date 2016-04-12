@@ -49,10 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Citizenship.cs" />
+    <Compile Include="City.cs" />
     <Compile Include="CustomerContactData.cs" />
     <Compile Include="CustomerPassport.cs" />
     <Compile Include="CustomerPersonalData.cs" />
+    <Compile Include="Disability.cs" />
     <Compile Include="IModel.cs" />
+    <Compile Include="MaritalStatus.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

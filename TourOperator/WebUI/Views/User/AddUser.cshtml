@@ -1,30 +1,6 @@
 ﻿<div class="row">
     <form class="form-horizontal" ng-controller="userController" ng-submit="add()">
-        <div class="form-group">
-            <label for="name" class="col-sm-2 control-label col-sm-offset-1">Имя пользователя</label>
-            <div class="col-sm-7 col-sm-offset-1">
-                <input type="text" ng-model="addForm.name" class="form-control" id="name" placeholder="Имя">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="email" class="col-sm-2 control-label col-sm-offset-1">Email</label>
-            <div class="col-sm-7 col-sm-offset-1">
-                <input type="email" ng-model="addForm.email" class="form-control" id="email" placeholder="Email">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="password" class="col-sm-2 control-label col-sm-offset-1">Пароль</label>
-            <div class="col-sm-7 col-sm-offset-1">
-                <input type="password" ng-model="addForm.password" class="form-control" id="password" placeholder="Пароль">
-            </div>
-        </div>
-        <div class="col-sm-4 col-sm-offset-4">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" ng-model="addForm.isAdmin" />Администратор
-                </label>
-            </div>
-        </div>
+        @Html.Partial("UserEditForm", true)
         <div class="form-group">
             <div class="col-sm-offset-5 col-sm-7">
                 <button type="submit" class="btn btn-default" style="margin-top: 15px;">Добавить</button>

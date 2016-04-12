@@ -20,10 +20,8 @@ namespace WebUI
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js",
-                      "~/Scripts/bootstrap-datepicker.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap")
+                .Include("~/Scripts/bootstrap.js", "~/Scripts/respond.js"));
             
             bundles.Add(new ScriptBundle("~/bundles/controllers")
                 .IncludeDirectory("~/Scripts/controllers", "*.js")
@@ -33,6 +31,9 @@ namespace WebUI
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-datepicker.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/font-awesome")
+                .Include("~/Content/font-awesome.min.css"));
         }
     }
 }

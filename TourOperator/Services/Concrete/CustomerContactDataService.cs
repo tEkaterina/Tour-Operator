@@ -21,11 +21,11 @@ namespace Services.Concrete
             _contactDataRepository = contactDataRepository;
         }
 
-        public void Add(CustomerContactData customerContactData)
+        public void Update(CustomerContactData customerContactData)
         {
             if (customerContactData == null)
                 throw new ArgumentNullException(nameof(customerContactData));
-            _contactDataRepository.Create(customerContactData);
+            _contactDataRepository.Update(customerContactData);
             _uow.Commit();
         }
 

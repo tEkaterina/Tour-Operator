@@ -10,7 +10,7 @@ namespace Models
         public string Surname { get; set; }
         public string Patronymic { get; set; }
         public DateTime? Birthdate { get; set; }
-        public char Sex { get; set; }
+        public string Sex { get; set; }
 
         public string MaritalStatus { get; set; }
         public string Citizenship { get; set; }
@@ -21,6 +21,6 @@ namespace Models
         public decimal Salary { get; set; }
 
         public virtual CustomerPassport CustomerPassport { get; set; }
-        public virtual CustomerContactData CustomerContactPlace { get; set; }
+        public virtual CustomerContactData CustomerContactData { get; set; }
     }
 }
